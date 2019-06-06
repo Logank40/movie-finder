@@ -40,8 +40,8 @@ class Saved extends Component {
                   : this.state.movieList.map(movie => {
                       return (
                         <Col key={movie._id} md={6}>
-                          <Card title={movie.title} image={movie.image ? movie.image : undefined}>
-                            <p>{movie.description}</p>
+                          <Card title={movie.Title} image={movie.Poster ? movie.Poster : undefined}>
+                            <p>{movie.Plot}</p>
                             <button
                               onClick={() => this.handleRemoveMovie(movie._id)}
                               className="btn btn-danger btn-sm">

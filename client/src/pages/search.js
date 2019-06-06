@@ -81,7 +81,7 @@ class Search extends Component {
                 
                       {<button
                       
-                       onClick={() => this.handleSaveMovie(this.state.movie.id)}
+                       onClick={() => this.handleSaveMovie(this.state.movie.Title)}
                        className="btn btn-success btn-sm">
                        Save Movie
                      </button>}
