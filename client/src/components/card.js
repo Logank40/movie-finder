@@ -14,6 +14,7 @@ const Card = props => {
       <div className="card-body">
         {props.children}
       </div>
+
     </div>
   )
 }

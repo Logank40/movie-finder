@@ -13,9 +13,10 @@ export const removeMovie = movieId => {
 };
 
 export const searchOmdbMovies = query => {
-  return axios.get('http://www.omdbapi.com/?apikey=[85f33b0b]&', {
+  return axios.get('http://www.omdbapi.com', {
     params: {
-      q: query
+      t: query,
+      apikey: "85f33b0b"
     }
   });
 };

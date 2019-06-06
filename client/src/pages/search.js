@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Jumbotron from '../components/Jumbotron';
-import Row from '../components/Row';
-import Col from '../components/Col';
-import Card from '../components/Card';
+import Jumbotron from '../components/jumbotron.js';
+import Row from '../components/row.js';
+import Col from '../components/col.js';
+import Card from '../components/card.js';
 import { searchOmdbMovies, saveMovie, removeMovie, getSavedMovies } from '../utils/API';
 
 class Search extends Component {
   state = {
     searchTerm: '',
     movieList: [],
+    movie: {},
     savedMovieIds: []
   };
 
@@ -23,17 +24,11 @@ class Search extends Component {
     event.preventDefault();
 
     searchOmdbMovies(this.state.searchTerm)
-      .then(({ data: { items: movieList } }) => {
-        const movieListCleaned = movieList.map(movie => {
-          return {
-            movieId: movie.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors,
-            description: book.volumeInfo.description,
-            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ""
-          }
+      .then(({ data: movie }) => {
+        console.log(movie);
+        this.setState({
+          movie
         })
-        return this.setState({ movieList: movieListCleaned });
       })
       .then(this.retrieveSavedMovies)
       .catch(err => console.log(err));
@@ -45,15 +40,15 @@ class Search extends Component {
     saveMovie(movie)
       .then(() => {
         const savedMovieIds = [...this.state.savedMovieIds, movieId];
-        this.setState({ savedMovieIds})
+        this.setState({ savedMovieIds })
       })
   }
 
   retrieveSavedMovies = () => {
     getSavedMovies()
-      .then(({data: dbSavedMovies}) => {
-        const savedMovieIds = dbSavedMovies.map(({movieId}) => movieId);
-        this.setState({savedMovieIds});
+      .then(({ data: dbSavedMovies }) => {
+        const savedMovieIds = dbSavedMovies.map(({ movieId }) => movieId);
+        this.setState({ savedMovieIds });
       });
   }
 
@@ -66,10 +61,10 @@ class Search extends Component {
             <Col xs={12} md={4}>
               <Card title="Search for a movie">
                 <form onSubmit={this.handleFormSubmit}>
-                  <input type="text" className="form-control" placeholder="Search for a movie" 
-                  onChange={this.handleInputChange}
-                  value={this.state.searchTerm}
-                  name="searchTerm"  
+                  <input type="text" className="form-control" placeholder="Search for a movie"
+                    onChange={this.handleInputChange}
+                    value={this.state.searchTerm}
+                    name="searchTerm"
                   />
                   <button type="submit" className="btn btn-block btn-dark">Search For Movies</button>
                 </form>
@@ -77,27 +72,23 @@ class Search extends Component {
             </Col>
             <Col xs={12} md={8}>
               <Row>
-                {
-                  !this.state.movieList.length ? "" : (
-                    this.state.movieList.map(movie => {
-                      return (
-                        <Col key={movie.id} md={6}>
-                          <Card title={movie.title} image={book.image ? book.image : undefined}>
-                            <p>
-                              {book.description}
-                            </p>
-                            <button 
-                              disabled={this.state.savedMovieIds.includes(movie.movieId) ? true : undefined}
-                              onClick={() => this.handleSaveMovie(book.bookId)}
-                              className="btn btn-success btn-sm">
-                              Save Movie
-                            </button>
-                          </Card>
-                        </Col>
-                      )
-                    })
-                  )
-                }
+                {this.state.movie ? (
+                  <Col md={6}>
+                    <Card title={this.state.movie.Title} image={this.state.movie.Poster ? this.state.movie.Poster : undefined}>
+                      <p>
+                        {this.state.movie.Plot}
+                      </p>
+                
+                      {<button
+                      
+                       onClick={() => this.handleSaveMovie(this.state.movie.id)}
+                       className="btn btn-success btn-sm">
+                       Save Movie
+                     </button>}
+                    </Card>
+                  </Col>
+                ) : <h2>Search For Movie</h2>}
+
               </Row>
             </Col>
           </Row>

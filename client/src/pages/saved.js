@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Jumbotron from '../components/Jumbotron';
-import Row from '../components/Row';
-import Col from '../components/Col';
-import Card from '../components/Card';
+import Jumbotron from '../components/jumbotron.js';
+import Row from '../components/row.js';
+import Col from '../components/col.js';
+import Card from '../components/card.js';
 import { removeMovie, getSavedMovies } from '../utils/API';
 
 class Saved extends Component {

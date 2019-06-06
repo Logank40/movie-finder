@@ -10,6 +10,7 @@ const Col = props => {
         ${props.md ? `col-md-${props.md}` : ''}
       `}>
       {props.children}
+
     </div>
   );
 };

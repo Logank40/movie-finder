@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const BookSchema = new Schema({
+const MovieSchema = new Schema({
   movieId: {
     type: String
   },
@@ -12,13 +12,13 @@ const BookSchema = new Schema({
   authors: {
     type: Array
   },
-  description: {
+  plot: {
     type: String
   },
-  image: {
+  poster: {
     type: String
   },
-  link: {
+  website: {
     type: String
   }
 });
