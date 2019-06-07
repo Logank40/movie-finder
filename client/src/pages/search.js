@@ -3,6 +3,7 @@ import Jumbotron from '../components/jumbotron.js';
 import Row from '../components/row.js';
 import Col from '../components/col.js';
 import Card from '../components/card.js';
+import {Animated} from "react-animated-css";
 import { searchOmdbMovies, saveMovie, removeMovie, getSavedMovies } from '../utils/API';
 
 class Search extends Component {
@@ -34,14 +35,13 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
-  handleSaveMovie = (movieId) => {
-    const movie = this.state.movieList.find(movie => movie.movieId === movieId);
-
-    saveMovie(movie)
-      .then(() => {
-        const savedMovieIds = [...this.state.savedMovieIds, movieId];
-        this.setState({ savedMovieIds })
+  handleSaveMovie = () => {
+    console.log(this.state.movie);
+    saveMovie(this.state.movie)
+      .then(({data}) => {
+        console.log(data);
       })
+      .catch(err => console.log(err));
   }
 
   retrieveSavedMovies = () => {
@@ -81,7 +81,7 @@ class Search extends Component {
                 
                       {<button
                       
-                       onClick={() => this.handleSaveMovie(this.state.movie.Title)}
+                       onClick={() => this.handleSaveMovie()}
                        className="btn btn-success btn-sm">
                        Save Movie
                      </button>}

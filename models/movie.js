@@ -3,22 +3,16 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const MovieSchema = new Schema({
-  movieId: {
+  Title: {
     type: String
   },
-  title: {
+  Plot: {
     type: String
   },
-  authors: {
-    type: Array
-  },
-  plot: {
+  Post: {
     type: String
   },
-  poster: {
-    type: String
-  },
-  website: {
+  Website: {
     type: String
   }
 });

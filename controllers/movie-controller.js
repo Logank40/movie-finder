@@ -10,6 +10,7 @@ const getSavedMovies = (req, res) => {
 };
 
 const saveMovie = (req, res) => {
+  console.log(req.body);
   Movie.create(req.body)
     .then(dbMovieData => res.json(dbMovieData))
     .catch(err => {
