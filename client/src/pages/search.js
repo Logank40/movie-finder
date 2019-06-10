@@ -4,6 +4,7 @@ import Row from '../components/row.js';
 import Col from '../components/col.js';
 import Card from '../components/card.js';
 import { searchOmdbMovies, saveMovie, removeMovie, getSavedMovies } from '../utils/API';
+import BackgroundImg from '../assets/images/popcorn.jpg';
 
 class Search extends Component {
   state = {
@@ -55,7 +56,15 @@ class Search extends Component {
     return (
       <React.Fragment>
         <Jumbotron fluid bg={'dark'} color={'light'} pageTitle={'Search For Movies'} />
-        <div className="container-fluid">
+        <div 
+        className="container-fluid"
+        style={{
+          backgroundImage: `url(${BackgroundImg})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '100vh'
+        }}
+        >
           <Row>
             <Col xs={12} md={4}>
               <Card title="Search for a movie">
