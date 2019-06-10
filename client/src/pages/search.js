@@ -3,7 +3,6 @@ import Jumbotron from '../components/jumbotron.js';
 import Row from '../components/row.js';
 import Col from '../components/col.js';
 import Card from '../components/card.js';
-import {Animated} from "react-animated-css";
 import { searchOmdbMovies, saveMovie, removeMovie, getSavedMovies } from '../utils/API';
 
 class Search extends Component {
