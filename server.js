@@ -15,6 +15,6 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://http://127.0.0.1:8080/omdb-movies-db', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/omdb-movies-db', { useNewUrlParser: true });
 
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
