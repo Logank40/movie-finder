@@ -55,7 +55,7 @@ class Search extends Component {
   render() {
     return (
       <React.Fragment>
-        <Jumbotron fluid bg={'dark'} color={'light'} pageTitle={'Search For Movies'} />
+        <Jumbotron fluid bg={'dark'} color={'light'} pageTitle={'Movie Finder'} />
         <div 
         className="container-fluid"
         style={{
@@ -74,7 +74,7 @@ class Search extends Component {
                     value={this.state.searchTerm}
                     name="searchTerm"
                   />
-                  <button type="submit" className="btn btn-block btn-dark">Movie Finder</button>
+                  <button type="submit" className="btn btn-block btn-dark">Search For Movies</button>
                 </form>
               </Card>
             </Col>
