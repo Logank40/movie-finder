@@ -95,7 +95,7 @@ class Search extends Component {
                      </button>}
                     </Card>
                   </Col>
-                ) : <h2>Search For Movie</h2>}
+                ) : <h2>Movie Finder</h2>}
 
               </Row>
             </Col>
