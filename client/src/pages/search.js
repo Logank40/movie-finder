@@ -74,7 +74,7 @@ class Search extends Component {
                     value={this.state.searchTerm}
                     name="searchTerm"
                   />
-                  <button type="submit" className="btn btn-block btn-dark">Search For Movies</button>
+                  <button type="submit" className="btn btn-block btn-dark">Movie Finder</button>
                 </form>
               </Card>
             </Col>
