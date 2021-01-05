@@ -5,7 +5,7 @@
   "proxy": "http://localhost:3002",
   "dependencies": {
     "animate.css": "^3.7.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "concurrently": "^4.1.0",
     "mongoose": "^5.5.12",
     "react": "^16.8.6",
